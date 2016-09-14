@@ -1,4 +1,4 @@
-var siteURL = "localhost:8888/spuggs";
+var siteURL = "localhost:8888/spuggs/build";
 
 'use strict';
 module.exports = function(grunt) {
@@ -102,7 +102,7 @@ module.exports = function(grunt) {
         // sync with browsers
         browserSync: {
             bsFiles: {
-                src : ['*.css','*.html']
+                src : ['build/*.css','build/*.html']
             },
             options: {
                 proxy: siteURL,
