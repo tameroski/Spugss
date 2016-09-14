@@ -1,0 +1,90 @@
+/* ==========================================================================
+   Mixins
+   ========================================================================== */
+
+// Rem output with px fallback
+@mixin font-size($sizeValue: 1) {
+    font-size: ($sizeValue * 16) * 1px;
+    font-size: $sizeValue * 1rem;
+}
+@mixin line-height($sizeValue: 1) {
+    line-height: ($sizeValue * 16) * 1px;
+    line-height: $sizeValue * 1rem;
+}
+
+// Separator background
+@mixin separator-background($color) {
+    background-image: svg-url('<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="7px" height="4px" viewBox="0 0 7 4" preserveAspectRatio="xMidYMid meet" zoomAndPan="disable" ><circle id="circle" cx="2" cy="2" stroke="black" style="stroke-width: 0px;" r="2" fill="#{$color}"/></svg>');
+    background-repeat:repeat-x;
+    background-position:left center;
+}
+
+@mixin link-color($color, $shade: true){
+    color:$color;
+    &:active,
+    &:focus,
+    &:hover {
+        @if $shade{
+            color: shade($color, 25%);
+        }
+        @else
+        {
+            color: lighten($color, 25%);
+        }
+    }
+}
+
+/*************/
+/* FUNCTIONS */
+/*************/
+
+// Helper for removing units
+@function bh-remove-unit($target){
+    $one:1;
+    @if not unitless($target){
+        @if (unit($target) == "px"){$one:1px;}
+        @elseif (unit($target) == "em"){$one:1em;}
+        @elseif (unit($target) == "%"){$one:1%;}
+
+        @return $target / $one ;
+    }
+    @else
+        {@return $target;}
+}
+
+// Helper function 
+// Return null rather than throwing an error if index is outside list range.    
+@function nth-or-null($list, $index) {
+  @return if(length($list) >= $index, nth($list, $index), null);
+}  
+
+@function str-replace($string, $search, $replace: '') {
+    $index: str-index($string, $search); 
+    @if $index { 
+        @return str-slice($string, 1, $index - 1) + $replace + 
+        str-replace(str-slice($string, $index + 
+        str-length($search)), $search, $replace); 
+    }
+    @return $string; 
+}
+
+//  Function to create an optimized svg url
+@function svg-url($svg){
+    $encoded:'';
+    $slice: 2000;
+    $index: 0;
+    $loops: ceil(str-length($svg)/$slice);
+    @for $i from 1 through $loops {
+        $chunk: str-slice($svg, $index, $index + $slice - 1);
+        $chunk: str-replace($chunk,'"','\'');
+        $chunk: str-replace($chunk,'<','%3C');
+        $chunk: str-replace($chunk,'>','%3E');
+        $chunk: str-replace($chunk,'&','%26');
+        $chunk: str-replace($chunk,'#','%23');  
+        $chunk: str-replace($chunk,'{','%7B');  
+        $chunk: str-replace($chunk,'}','%7D');       
+        $encoded: #{$encoded}#{$chunk};
+        $index: $index + $slice;
+    }
+    @return url("data:image/svg+xml;charset=utf8,#{$encoded}");   
+}
