@@ -75,8 +75,8 @@ module.exports = function(grunt) {
             },
             minify: {
                 files: {
-                  'build/styles.css': ['assets/styles/build/styles.css','assets/styles/build/styles.css'],
-                  'build/ie.css': ['assets/styles/build/ie.css','assets/styles/build/ie.css'],
+                  'build/styles.css': ['assets/styles/build/*.css', 'assets/styles/build/styles.css'],
+                  'build/ie.css': ['assets/styles/build/*.css','assets/styles/build/ie.css'],
                 }
             },
         },
