@@ -1,4 +1,4 @@
-var siteURL = "localhost:8888/spuggs/build";
+var siteURL = "localhost:8888/spugss/build";
 
 'use strict';
 module.exports = function(grunt) {
