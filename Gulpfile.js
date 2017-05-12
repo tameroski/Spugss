@@ -14,9 +14,9 @@ var bourbon		= require("bourbon").includePaths,
 var proxy		= "http://localhost:8888/spugss/build";
 var paths 		= {
 	scripts: [
-		'app/assets/scripts/lib/jquery*.js',
-		'app/assets/scripts/lib/*.js',
-		'app/assets/scripts/*.js'
+		'./app/assets/scripts/lib/jquery*.js',
+		'./app/assets/scripts/lib/*.js',
+		'./app/assets/scripts/*.js'
 	],
 	styles: [
 		'./app/assets/styles/lib/*.scss',
@@ -24,18 +24,18 @@ var paths 		= {
 		'./app/assets/styles/styles.scss'
 	],
 	views:[
-		'app/views/*.pug'
+		'./app/views/*.pug'
 	]
 }
 
 /* Building scripts */
-gulp.task('scripts', function () {
+gulp.task('scripts', function (cb) {
 	pump([
 		gulp.src(paths.scripts),
 		concat('app.min.js'),
 		uglify(),
 		gulp.dest('./build/')
-	]);
+	], cb);
 });
 gulp.task('scripts-watch', ['scripts'], function (done) {
     browserSync.reload();
@@ -60,12 +60,12 @@ gulp.task('sass', function () {
 });
 
 /* Compiling Views */
-gulp.task('views', function () {
+gulp.task('views', function (cb) {
 	pump([
 		gulp.src(paths.views),
 		pug(),
 		gulp.dest('./build/')
-	]);
+	], cb);
 });
 gulp.task('views-watch', ['views'], function (done) {
     browserSync.reload();
@@ -82,7 +82,7 @@ gulp.task('serve', ['compile'], function () {
         browser: "google chrome",
     });
 
-    gulp.watch("app/assets/styles/**/*.scss", ['sass']);
+    gulp.watch("./app/assets/styles/**/*.scss", ['sass']);
 
     gulp.watch(paths.scripts, ['scripts-watch']);
     gulp.watch(paths.views, ['views-watch']);
