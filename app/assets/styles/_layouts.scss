@@ -1,4 +1,5 @@
-.boxed{
-	max-width: 1200px;
-	margin: 0 auto;
+.container {
+  @include margin(null auto);
+  @include padding(null $base-spacing);
+  max-width: 1200px;
 }
