@@ -2,16 +2,20 @@
   "name": "spugss",
   "version": "1.0.1",
   "dependencies": {
-    "grunt": "^1.0.1",
-    "grunt-autoprefixer": "^3.0.4",
-    "grunt-browser-sync": "^2.2.0",
-    "grunt-contrib-clean": "^1.0.0",
-    "grunt-contrib-cssmin": "^2.2.0",
-    "grunt-contrib-pug": "^1.0.0",
-    "grunt-contrib-sass": "^1.0.0",
-    "grunt-contrib-uglify": "^2.0.0",
-    "grunt-contrib-watch": "^1.0.0",
-    "load-grunt-tasks": "^3.4.0",
-    "node-neat": "^1.7.2"
+    "bourbon": "^5.0.0-beta.7",
+    "bourbon-neat": "^2.0.0",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^4.0.0",
+    "gulp-clean-css": "^3.2.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-connect": "^5.0.0",
+    "gulp-pug": "^3.3.0",
+    "gulp-sass": "^3.1.0",
+    "gulp-uglify": "^2.1.2",
+    "pump": "^1.0.2"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.18.8",
+    "gulp": "^3.9.1"
   }
 }

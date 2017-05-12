@@ -3,7 +3,7 @@
   background-color: $action-color;
   border: 0;
   border-radius: $base-border-radius;
-  color: $light-text;
+  color: #fff;
   cursor: pointer;
   display: inline-block;
   font-family: $base-font-family;
@@ -12,6 +12,7 @@
   font-weight: 600;
   line-height: 1;
   padding: $small-spacing $base-spacing;
+  text-align: center;
   text-decoration: none;
   transition: background-color $base-duration $base-timing;
   user-select: none;
@@ -21,7 +22,7 @@
   &:hover,
   &:focus {
     background-color: shade($action-color, 20%);
-    color: $light-text;
+    color: #fff;
   }
 
   &:disabled {

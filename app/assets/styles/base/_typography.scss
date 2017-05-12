@@ -11,38 +11,26 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: $base-font-family;
-  font-size: $base-font-size;
-  font-weight:normal;
+  font-family: $heading-font-family;
+  font-size: modular-scale(1);
+  line-height: $heading-line-height;
   margin: 0 0 $small-spacing;
-  text-transform:uppercase;
-  text-align:center;
-
-  sup{
-    @include font-size(0.7);
-  }
-}
-
-h2{
-  @include font-size(1.5);
-  font-weight:bold;
-}
-h3{
-  @include font-size(1.2);
 }
 
 p {
   margin: 0 0 $small-spacing;
-
-  &:last-of-type{
-    margin-bottom:0;
-  }
 }
 
 a {
+  color: $action-color;
   text-decoration: none;
   transition: color $base-duration $base-timing;
-  @include link-color($action-color);
+
+  &:active,
+  &:focus,
+  &:hover {
+    color: shade($action-color, 25%);
+  }
 }
 
 hr {
@@ -51,10 +39,4 @@ hr {
   border-right: 0;
   border-top: 0;
   margin: $base-spacing 0;
-}
-
-img,
-picture {
-  margin: 0;
-  max-width: 100%;
 }
