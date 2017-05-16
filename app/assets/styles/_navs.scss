@@ -6,6 +6,15 @@ header{
 
 }
 
+nav{
+	@include clearfix;
+
+	span, ul, li{
+		float:left;
+		margin-right: $base-spacing;
+	}
+}
+
 /****************************/
 /*          FOOTER          */
 /****************************/

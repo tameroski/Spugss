@@ -3,3 +3,7 @@
   @include padding(null $base-spacing);
   max-width: 1200px;
 }
+
+.col{
+	@include grid-column(4);
+}
