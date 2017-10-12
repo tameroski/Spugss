@@ -1,23 +1,21 @@
 /****************************/
 /*          HEADER          */
 /****************************/
+header {}
 
-header{
-
-}
-
-nav{
+nav {
 	@include clearfix;
 
-	span, ul, li{
-		float:left;
+	li,
+	span,
+	ul {
+		float: left;
 		margin-right: $base-spacing;
 	}
 }
-
 /****************************/
 /*          FOOTER          */
 /****************************/
-footer{
+footer {
 	padding: $base-spacing 0;
 }

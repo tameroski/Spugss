@@ -1,38 +1,22 @@
 .container {
-  @include margin(null auto);
-  @include padding(null $base-spacing);
-  max-width: 1200px;
+    @include margin(null auto);
+    @include padding(null $base-spacing);
+    max-width: 1200px;
+}
+$grid: ( columns: 1, gutter: 2rem, );
+$grid--tablet: ( columns: 3, gutter: 2rem, media: "(min-width: #{$medium-screen})", );
+$grid--desktop: ( columns: 12, gutter: 2rem, media: "(min-width: #{$large-screen})", );
+
+.grid {
+    @include grid-container;
 }
 
-$grid: (
-	columns: 1,
-  	gutter: 2rem,
-);
-
-$grid--tablet:(
-	columns: 3,
-  	gutter: 2rem,
-	media: "(min-width: #{$medium-screen})",
-);
-
-$grid--desktop:(
-	columns: 12,
-  	gutter: 2rem,
-	media: "(min-width: #{$large-screen})",
-);
-
-.grid{
-	@include grid-container;
-}
-
-.col{
-	@include grid-column(1, $grid);
-
-	@include grid-media($grid--tablet) {
-		@include grid-column(1);
-	}
-
-	@include grid-media($grid--desktop) {
-		@include grid-column(4);
-	}
+.col {
+    @include grid-column(1, $grid);
+    @include grid-media($grid--tablet) {
+         @include grid-column(1);
+    }
+    @include grid-media($grid--desktop) {
+         @include grid-column(4);
+    }
 }
