@@ -11,8 +11,14 @@ section {
 
 .content {
     text-align: center;
+    padding: $base-spacing 0;
 }
 
-.col {
-    padding: ($base-spacing * 2) 0;
+.grid{
+    margin-bottom: $base-spacing;
+}
+
+.grid > div{
+    padding: $base-spacing 0 $base-spacing/2;
+    background: $light-gray;
 }
