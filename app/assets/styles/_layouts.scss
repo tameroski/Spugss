@@ -11,6 +11,13 @@ $grid--desktop: ( columns: 12, gutter: $grid-gutter, media: "(min-width: #{$larg
 .grid {
     @include grid-container;
     @include grid-collapse($grid);
+
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    align-content: center;
+    box-sizing: border-box;
 }
 
 // One Third
@@ -19,18 +26,12 @@ $grid--desktop: ( columns: 12, gutter: $grid-gutter, media: "(min-width: #{$larg
     @include grid-media($grid--tablet) {
          @include grid-column(4);
     }
-    @include grid-media($grid--desktop) {
-         @include grid-column(4);
-    }
 }
 
 // 2 Thirds
 .col-2-3 {
     @include grid-column(1, $grid);
     @include grid-media($grid--tablet) {
-         @include grid-column(8);
-    }
-    @include grid-media($grid--desktop) {
          @include grid-column(8);
     }
 }
@@ -50,9 +51,6 @@ $grid--desktop: ( columns: 12, gutter: $grid-gutter, media: "(min-width: #{$larg
 .col-1-2, .col-2-4 {
     @include grid-column(1, $grid);
     @include grid-media($grid--tablet) {
-         @include grid-column(6);
-    }
-    @include grid-media($grid--desktop) {
          @include grid-column(6);
     }
 }
