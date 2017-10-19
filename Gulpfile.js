@@ -1,15 +1,15 @@
 var bourbon = require("bourbon").includePaths,
 	neat = require("bourbon-neat").includePaths,
-	autoprefix = require("gulp-autoprefixer"),
+	autoprefixer = require("gulp-autoprefixer"),
 	connect = require("gulp-connect"),
 	gulp = require("gulp"),
 	sass = require("gulp-sass");
-uglify = require('gulp-uglify');
-pump = require('pump');
-concat = require('gulp-concat');
-cleanCSS = require('gulp-clean-css');
-pug = require('gulp-pug');
-browserSync = require('browser-sync').create();
+	uglify = require('gulp-uglify');
+	pump = require('pump');
+	concat = require('gulp-concat');
+	cleanCSS = require('gulp-clean-css');
+	pug = require('gulp-pug');
+	browserSync = require('browser-sync').create();
 
 var proxy = "http://localhost:8888/spugss/build";
 var paths = {
@@ -54,6 +54,7 @@ gulp.task('sass', function() {
 			compatibility: 'ie9',
 			keepSpecialComments: 0,
 		}),
+		autoprefixer(),
 		gulp.dest('./build/'),
 		browserSync.stream()
 	]);

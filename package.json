@@ -1,9 +1,12 @@
 {
   "name": "spugss",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "dependencies": {
     "bourbon": "^5.0.0-beta.7",
-    "bourbon-neat": "^2.0.0",
+    "bourbon-neat": "^2.0.0"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.18.13",
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^4.0.0",
     "gulp-clean-css": "^3.9.0",
@@ -13,9 +16,5 @@
     "gulp-sass": "^3.1.0",
     "gulp-uglify": "^3.0.0",
     "pump": "^1.0.2"
-  },
-  "devDependencies": {
-    "browser-sync": "^2.18.13",
-    "gulp": "^3.9.1"
   }
 }
