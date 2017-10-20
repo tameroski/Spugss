@@ -2,7 +2,7 @@
 
 ## Requirements
 
-Ruby, Sass & Gulp
+Node.js
 
 ## Installation
 
