@@ -4,15 +4,16 @@ var bourbon = require("bourbon").includePaths,
 	del = require("del"),
 	connect = require("gulp-connect"),
 	gulp = require("gulp"),
-	sass = require("gulp-sass");
-	uglify = require('gulp-uglify');
-	pump = require('pump');
-	concat = require('gulp-concat');
-	cleanCSS = require('gulp-clean-css');
-	pug = require('gulp-pug');
+	sass = require("gulp-sass"),
+	uglify = require('gulp-uglify'),
+	pump = require('pump'),
+	concat = require('gulp-concat'),
+	cleanCSS = require('gulp-clean-css'),
+	pug = require('gulp-pug'),
 	browserSync = require('browser-sync').create();
 
 var proxy = "http://localhost:8888/spugss/build";
+
 var paths = {
 	src: {
 		scripts: [
