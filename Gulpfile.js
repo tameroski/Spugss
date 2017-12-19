@@ -1,6 +1,7 @@
 var bourbon = require("bourbon").includePaths,
 	neat = require("bourbon-neat").includePaths,
 	autoprefixer = require("gulp-autoprefixer"),
+	del = require("del"),
 	connect = require("gulp-connect"),
 	gulp = require("gulp"),
 	sass = require("gulp-sass");
@@ -13,28 +14,37 @@ var bourbon = require("bourbon").includePaths,
 
 var proxy = "http://localhost:8888/spugss/build";
 var paths = {
-	scripts: [
-		'./app/assets/scripts/lib/jquery*.js',
-		'./app/assets/scripts/lib/*.js',
-		'./app/assets/scripts/*.js'
-	],
-	styles: [
-		'./app/assets/styles/lib/*.scss',
-		'./app/assets/styles/lib/*.css',
-		'./app/assets/styles/styles.scss'
-	],
-	views: [
-		'./app/views/*.pug'
-	]
+	src: {
+		scripts: [
+			'./app/assets/scripts/lib/jquery*.js',
+			'./app/assets/scripts/lib/*.js',
+			'./app/assets/scripts/*.js'
+		],
+		styles: [
+			'./app/assets/styles/lib/*.scss',
+			'./app/assets/styles/lib/*.css',
+			'./app/assets/styles/styles.scss'
+		],
+		views: [
+			'./app/views/*.pug'
+		],
+		images: [
+			'./app/assets/images/**/*'
+		]
+	},
+	dest: {
+		main: './build/',
+		images: './build/images/'
+	}
 };
 
 /* Building scripts */
 gulp.task('scripts', function(cb) {
 	pump([
-		gulp.src(paths.scripts),
+		gulp.src(paths.src.scripts),
 		concat('app.min.js'),
 		uglify(),
-		gulp.dest('./build/')
+		gulp.dest(paths.dest.main)
 	], cb);
 });
 gulp.task('scripts-watch', ['scripts'], function(done) {
@@ -45,7 +55,7 @@ gulp.task('scripts-watch', ['scripts'], function(done) {
 /* Compiling stylesheets */
 gulp.task('sass', function() {
 	pump([
-		gulp.src(paths.styles),
+		gulp.src(paths.src.styles),
 		concat('styles.min.css'),
 		sass({
 			includePaths: ["styles"].concat(bourbon).concat(neat)
@@ -55,7 +65,7 @@ gulp.task('sass', function() {
 			keepSpecialComments: 0,
 		}),
 		autoprefixer(),
-		gulp.dest('./build/'),
+		gulp.dest(paths.dest.main),
 		browserSync.stream()
 	]);
 });
@@ -63,12 +73,31 @@ gulp.task('sass', function() {
 /* Compiling Views */
 gulp.task('views', function(cb) {
 	pump([
-		gulp.src(paths.views),
+		gulp.src(paths.src.views),
 		pug(),
-		gulp.dest('./build/')
+		gulp.dest(paths.dest.main)
 	], cb);
 });
 gulp.task('views-watch', ['views'], function(done) {
+	browserSync.reload();
+	done();
+});
+
+/* Copying Images */
+gulp.task('copy-images', ['copy-images-clear'], function(cb) {
+	pump([
+		gulp.src(paths.src.images),
+		gulp.dest(paths.dest.images)
+	], cb);
+});
+gulp.task('copy-images-clear', function(done) {
+	del(paths.dest.images, {force:true});
+	done();
+});
+gulp.task('copy', ['copy-images'], function(done) {
+	done();
+});
+gulp.task('copy-watch', ['copy'], function(done) {
 	browserSync.reload();
 	done();
 });
@@ -84,10 +113,11 @@ gulp.task('serve', ['compile'], function() {
 
 	gulp.watch("./app/assets/styles/**/*.scss", ['sass']);
 
-	gulp.watch(paths.scripts, ['scripts-watch']);
-	gulp.watch(paths.views, ['views-watch']);
+	gulp.watch(paths.src.scripts, ['scripts-watch']);
+	gulp.watch(paths.src.views, ['views-watch']);
+	gulp.watch(paths.src.images, ['copy-watch']);
 });
 
-gulp.task('compile', ['scripts', 'sass', 'views']);
+gulp.task('compile', ['copy', 'scripts', 'sass', 'views']);
 
 gulp.task('default', ['serve']);
