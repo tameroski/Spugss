@@ -1,6 +1,6 @@
 # Spugss
 
-![Spugss](https://github.com/tameroski/Spugss/tree/master/app/assets/images/logo@2x.png)
+![Spugss](app/assets/images/logo@2x.png)
 
 ## Requirements
 
