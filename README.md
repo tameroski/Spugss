@@ -10,7 +10,7 @@ Clone repository and run `npm install` to install dependencies.
 
 To run the main task : `gulp`
 
-This will compile Sass files, Pug files, minify css & JS and launch Chrome.
+This will compile Sass files, Pug files, minify css & JS and launch in browser.
 
 ## Configuration
 

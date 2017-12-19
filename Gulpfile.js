@@ -80,7 +80,6 @@ gulp.task('serve', ['compile'], function() {
 		proxy: proxy,
 		watchTask: true,
 		server: false,
-		browser: "google chrome",
 	});
 
 	gulp.watch("./app/assets/styles/**/*.scss", ['sass']);
