@@ -36,6 +36,11 @@ var paths = {
 	dest: {
 		main: './build/',
 		images: './build/images/'
+	},
+	watch: {
+		views: [
+			'./app/views/**/*.pug'
+		],
 	}
 };
 
@@ -115,7 +120,7 @@ gulp.task('serve', ['compile'], function() {
 	gulp.watch("./app/assets/styles/**/*.scss", ['sass']);
 
 	gulp.watch(paths.src.scripts, ['scripts-watch']);
-	gulp.watch(paths.src.views, ['views-watch']);
+	gulp.watch(paths.watch.views, ['views-watch']);
 	gulp.watch(paths.src.images, ['copy-watch']);
 });
 
