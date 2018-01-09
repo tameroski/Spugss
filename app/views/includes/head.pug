@@ -1,3 +1,14 @@
+//- CONFIGURATION
+- var NAME = "Spugss"
+- var TITLE = NAME + " | Pug & Sass made easy !"
+- var DESCRIPTION = "Pug & Sass made easy !"
+- var KEYWORDS = "Pug, Sass, HTML, Web, Development, Automation"
+- var URL = "https://github.com/tameroski/Spugss"
+- var IMAGE = URL + "/images/logo.png"
+- var FB_APP_ID = "11111111"
+
+title #{TITLE}
+
 meta(charset="utf-8")
 meta(name="viewport", content="width=device-width, initial-scale=1.0")
 meta(http-equiv="X-UA-Compatible" content="IE=edge")
@@ -6,3 +17,21 @@ link(
     rel="stylesheet",
     type="text/css"
 )
+
+meta(name="description", content=DESCRIPTION)
+meta(name="keywords", content=KEYWORDS)
+
+//- FACEBOOK
+meta(property="og:title", content=TITLE)
+meta(property="fb:app_id", content=FB_APP_ID)
+meta(property="og:type", content="website")
+meta(property="og:description", content=DESCRIPTION)
+meta(property="og:site_name", content=TITLE)
+meta(property="og:url", content=URL)
+meta(property="og:image", content=IMAGE)
+
+//- TWITTER
+meta(name="twitter:card", content=DESCRIPTION)
+meta(name="twitter:title", content=TITLE)
+meta(name="twitter:description", content=DESCRIPTION)
+meta(name="twitter:image", content=IMAGE)
