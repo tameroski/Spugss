@@ -1,6 +1,6 @@
 {
   "name": "spugss",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "dependencies": {
     "bourbon": "^5.0.0",
     "bourbon-neat": "^2.0.0"
