@@ -15,7 +15,6 @@
     "gulp-connect": "^5.0.0",
     "gulp-pug": "^3.3.0",
     "gulp-sass": "^3.1.0",
-    "gulp-uglify": "^3.0.0",
-    "pump": "^1.0.2"
+    "gulp-uglify": "^3.0.0"
   }
 }
